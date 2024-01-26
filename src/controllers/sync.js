@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cron = require('node-cron');
 const { Issue } = require('./models/issue');
-
+const logger = require('../logger');
 // Function to fetch GitHub issues and synchronize with the local database
 const synchronizeIssues = async () => {
   try {
@@ -37,7 +37,9 @@ const synchronizeIssues = async () => {
     }
 
     console.log('GitHub issues synchronized successfully.');
+    logger.info(`GitHub issues synchronized successfully`);
   } catch (error) {
+    logger.error(`Error creating issue: ${error.message}`);
     console.error('Error synchronizing GitHub issues:', error.message);
   }
 };

@@ -53,7 +53,6 @@ app.use('/api', routes);
  
 // GitHub OAuth routes
 app.get('/auth/github', passport.authenticate('github'));
-console.log('as')
 app.get(
   '/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
@@ -63,7 +62,6 @@ app.get(
     res.redirect('/');
   }
 );
-console.log('as2')
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

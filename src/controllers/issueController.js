@@ -30,7 +30,7 @@ exports.createIssue = async (req, res) => {
 
     res.json(issue);
   } catch (error) {
-    logger.error(`Error updating issue: ${error.message}`);
+    logger.error(`Error creating issue: ${error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -41,7 +41,7 @@ exports.getIssues = async (_req, res) => {
     const issues = await Issue.findAll();
     res.json(issues);
   } catch (error) {
-    logger.error(`Error updating issue: ${error.message}`);
+    logger.error(`Error getting issue: ${error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -78,7 +78,7 @@ exports.updateIssue = async (req, res) => {
       res.status(404).json({ error: 'Issue not found' });
     }
   } catch (error) {
-    logger.error(`Error creating issue: ${error.message}`);
+    logger.error(`Error updating issue: ${error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -110,7 +110,7 @@ exports.deleteIssue = async (req, res) => {
       res.status(404).json({ error: 'Issue not found' });
     }
   } catch (error) {
-    logger.error(`Error updating issue: ${error.message}`);
+    logger.error(`Error deleting issue: ${error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
